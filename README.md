@@ -1,31 +1,37 @@
-# Getting Started with Create React App
+# Getting Started with Create React App / Начало работы с созданием приложения React
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+// Этот проект был запущен с 
 
-## Available Scripts
+## Available Scripts / Доступные скрипты
 
 In the project directory, you can run:
+// В каталоге проекта вы можете запустить:
 
 ### `npm start`
 
-Runs the app in the development mode.\
+Runs the app in the development mode.\ Запускает приложение в режиме разработки
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The page will reload when you make changes.\ Страница перезагрузится, когда вы внесете изменения
+You may also see any lint errors in the console. / Вы также можете увидеть любые ошибки lint в консоли
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
+Launches the test runner in the interactive watch mode.\  Запускает тестовый раннер в интерактивном режиме просмотра
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm run build`
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
+// Создает приложение для производства в папке `build`.\
+Он правильно объединяет React в производственном режиме и оптимизирует сборку для достижения наилучшей производительности
 
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
+// Сборка минимизирована, а имена файлов включают хэши.\
+Ваше приложение готово к развертыванию!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
