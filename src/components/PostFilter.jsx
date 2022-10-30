@@ -1,6 +1,7 @@
 import React from "react";
 import MyInput from "./UI/input/MyInput";
 import MySelect from "./UI/select/MySelect";
+import classes from "./../styles/App.css"
 
 const PostFilter = ({filter, setFilter}) => {
   return (
@@ -11,16 +12,19 @@ const PostFilter = ({filter, setFilter}) => {
           onChange={e => setFilter({...filter, query: e.target.value})}
           placeholder="Поиск"
         />
-
-        <MySelect
-          value={filter.sort}
-          onChange={selectedSort => setFilter({...filter, sort: selectedSort})}
-          defaultValue="Сортировка"
-          option={[
-            {value: 'title', name: 'По названию'},
-            {value: 'body', name: 'По описанию'}
-          ]}
-        />
+        <div className={classes.sortBlock}>
+          <p>Сортировать по</p>
+          <MySelect
+            value={filter.sort}
+            onChange={selectedSort => setFilter({...filter, sort: selectedSort})}
+            defaultValue="Сортировка"
+            option={[
+              {value: 'title', name: 'названию'},
+              {value: 'body', name: 'описанию'}
+            ]}
+          />
+        </div>
+        
       </div>
 
     </div>
