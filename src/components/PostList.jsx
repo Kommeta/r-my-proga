@@ -1,7 +1,7 @@
 import React from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import PostItem from './PostItem';
-import './../styles/App.css';
+import './../styles/App.scss';
 
 const PostList = ({posts, title, remove}) => {
 

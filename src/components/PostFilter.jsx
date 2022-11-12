@@ -1,7 +1,7 @@
 import React from "react";
 import MyInput from "./UI/input/MyInput";
 import MySelect from "./UI/select/MySelect";
-import classes from "./../styles/App.css"
+import classes from "./../styles/App.scss"
 
 const PostFilter = ({filter, setFilter}) => {
   return (
