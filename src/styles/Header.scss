@@ -1,4 +1,10 @@
+nav {
+  background-color: #333333;
+  margin: 0 0 20px 0;
+  padding: 10px 0;
+  width: 100%;
 
+}
 .header-content {
   width: 940px;
   margin: 0 auto; 
@@ -7,9 +13,12 @@
   align-items: center;
 }
 .link-navigation a {
-  color: rgb(158, 206, 228);
+  color: #ffb236;
   text-decoration: none;
   margin: 0 15px;
+  &:hover {
+    color: #ffd795;
+  }
 }
 .link-navigation a.active {
   color: #fff;

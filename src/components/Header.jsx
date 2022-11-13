@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import logo from "./../images/A-logo.png"
+import logo from "./../images/logo-kubtel.svg"
 import './../styles/Header.scss'
 
 
@@ -8,7 +8,7 @@ import './../styles/Header.scss'
 const Header = () =>  {
   return (
     <>
-      <nav style={{margin: '20 0', padding: '10px 0', backgroundColor: 'rgb(31 0 43)', width: '100%'}}>
+      <nav>
         <div className="header-content">
           <img 
             src={logo} 
@@ -23,7 +23,8 @@ const Header = () =>  {
               О нас
             </NavLink>
             <NavLink to="/basket">
-              Корзина
+              Корзина: 
+              <span><b> 0</b> руб.</span>
             </NavLink>
           </div>
         </div>    

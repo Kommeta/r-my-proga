@@ -3,7 +3,16 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+li {
+  list-style-type: none;
+}
+body {
+  height: 100%;
+}
+.wrapper {
+  min-height: calc(100vh - 103px);
+  padding-bottom: 60px;
+}
 #root {
 }
 
@@ -36,8 +45,6 @@
   transform: translateX(-350px);
   transition: all 500ms ease-in;
 }
-
-
 .sortBlock {
   display: flex;
   align-items: center;
@@ -47,3 +54,115 @@ p {
   margin-right: 10px;
 }
 
+// page HOME ------------------------------------
+h1, h2 {
+  color: #ff6b00;
+  font-weight: 400;
+}
+.cards-wrapper {
+  margin: 30px 0;
+  display: flex;
+  justify-content: space-between;
+}
+.card {
+  width: 280px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  &:hover {
+    border-color: #ffd795;
+  }
+  img {
+    border-radius: 4px;
+  }
+  &-description {
+    color: #4c4c4c;
+    font-size: 14px;
+    margin-top: 20px;
+    cursor: pointer;
+    &:hover {
+      color: #161616;
+    }
+  }
+  &-price {
+    margin-top: 10px;
+    font-size: 18px;
+    span {
+      margin-right: 10px;
+    }
+  }
+}
+.btn {
+  &__add {
+    color: #fff;
+    font-size: 14px;
+    background-color: #333333;
+    border-color: #333;
+    border-radius: 4px;
+    width: 95px;
+    height: 38px;
+    padding: 9px 12px;
+    margin: 0 0 0 10px;
+    cursor: pointer;
+    &:hover {
+      background-color: #161616;
+      color: #ffd795;
+      transition: all 0.2s;
+    }
+  }
+  &__basket-delete {
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #333;
+    border-radius: 4px;
+    width: 95px;
+    height: 38px;
+    padding: 9px 12px;
+    margin: 0 0 0 10px;
+    cursor: pointer;
+    &:hover {
+      color: #000;
+      border-color: #000;
+      transition: all 0.2s;
+    }
+  }
+  &__basket-buy {
+    background-color: #161616;
+    color: #ffb236;
+    font-size: 18px;
+    border-radius: 4px;
+    padding: 10px 20px;
+    margin: 20px 0 0;
+    &:hover {
+      background-color: #ff6a00;
+      color: #ffd795;
+      transition: all 0.2s;
+    }
+  }
+}
+.block-sum {
+}
+.sum {
+  &__delivery {
+    margin-top: 15px;
+    h2 {
+      margin-bottom: 15px;
+    }
+  }
+  &__reduction {
+    margin-top: 15px;
+    h2 {
+      margin-bottom: 15px;
+    }
+  }
+  &__total {
+    margin: 15px 0;
+    font-size: 20px;
+    font-weight: 600;
+  }
+}
