@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import logo from "./../images/logo-kubtel.svg"
 import './../styles/Header.scss'
-
+import { Link, animateScroll as scroll } from "react-scroll";
 
 
 const Header = () =>  {
@@ -20,9 +20,12 @@ const Header = () =>  {
               Главная
             </NavLink>
             <NavLink to="/reviews">
+              Отзывы
+            </NavLink>
+            <NavLink to="/about">
               О нас
             </NavLink>
-            <NavLink to="/basket">
+            <NavLink to="/">
               Корзина: 
               <span><b> 0</b> руб.</span>
             </NavLink>

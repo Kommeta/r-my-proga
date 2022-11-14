@@ -2,9 +2,9 @@ import React from 'react';
 import './styles/App.scss';
 import {BrowserRouter, Routes ,Route} from 'react-router-dom'
 import { Home } from './pages/Home';
-import { Basket } from './pages/Basket';
 import Header from './components/Header';
 import { Reviews } from './pages/Reviews';
+import { About } from './pages/About';
 import Footer from './components/Footer';
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
         <Routes>
           <Route path={'/'} exact element={<Home />} />
           <Route path={'/reviews'} element={<Reviews />} />
-          <Route path={'/basket'} element={<Basket />} />
+          <Route path={'/about'} element={<About />} />
         </Routes>
       </div>
     </div> 

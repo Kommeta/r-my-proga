@@ -4,7 +4,7 @@ import logo from "./../images/logo-kubtel.svg"
 const Footer = () =>  {
   return (
     <>
-      <div className="footer" style={{margin: '20 0', padding: '15px 0 5px ', backgroundColor: 'rgb(0 0 0)', width: '100%', textAlign: 'center'}} >
+      <div className="footer" >
         <img 
           src={logo} 
           height="30"

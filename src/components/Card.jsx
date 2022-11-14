@@ -1,26 +1,26 @@
 import React, {useState} from "react";
 
-function Card(props) {
+const Card = (props) => {
 
   const [isAdded, setIsAdded] = useState();
 
   const onClickPlus = () => {
-    setIsAdded(true)
+    setIsAdded(!isAdded)
   };
 
   return (
     <>
     <div className="card">
           <img 
-          src={props.imageUrl}
+          src={props.card.imageUrl}
           width={150}
           alt="" />
           <p className="card-description">
-            {props.title}
+            {props.card.title}
           </p>
           <div className="card-price">
             <span>Цена:</span>
-            <b>{props.price} руб.</b>
+            <b>{props.card.prace} руб.</b>
             <button 
               className={`sidebar ${isAdded ? 'btn__basket-delete' : 'btn__add' }`}
               onClick={onClickPlus}
