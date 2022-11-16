@@ -1,35 +1,36 @@
 import React, {useState} from "react";
 
-const Card = (props) => {
+const Card = ({imageUrl, title, price, onPlus}) => {
 
   const [isAdded, setIsAdded] = useState();
 
   const onClickPlus = () => {
+    onPlus({imageUrl, title, price});
     setIsAdded(!isAdded)
   };
 
   return (
     <>
-    <div className="card">
-          <img 
-          src={props.card.imageUrl}
-          width={150}
-          alt="" />
-          <p className="card-description">
-            {props.card.title}
-          </p>
-          <div className="card-price">
-            <span>Цена:</span>
-            <b>{props.card.prace} руб.</b>
-            <button 
-              className={`sidebar ${isAdded ? 'btn__basket-delete' : 'btn__add' }`}
-              onClick={onClickPlus}
-              type="button"
-              >
-                {isAdded ? 'удалить' : 'в корзину' }              
-            </button>
-          </div>
+      <div className="card">
+        <img 
+        src={imageUrl}
+        width={150}
+        alt="" />
+        <p className="card-description">
+          {title}
+        </p>
+        <div className="card-price">
+          <span>Цена:</span>
+          <b>{price} руб.</b>
+          <button 
+            className={`sidebar ${isAdded ? 'btn__basket-delete' : 'btn__add' }`}
+            onClick={onClickPlus}
+            type="button"
+            >
+              {isAdded ? 'добавлен' : 'в корзину' }              
+          </button>
         </div>
+      </div>
     </>
   )
 }
