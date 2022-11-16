@@ -23,12 +23,12 @@ const PostForm = ({create}) => {
             value={post.title}
             onChange={e => setPost({...post, title: e.target.value})}
             type="text" 
-            placeholder='название поста' />
+            placeholder='Ваше имя' />
         <MyInput 
             value={post.body}
             onChange={e => setPost({...post, body: e.target.value})}
             type="text" 
-            placeholder='описание поста' />
+            placeholder='Ваш отзыв' />
 
         <MyButton onClick={addNewPost} >Создать</MyButton>
       </form>

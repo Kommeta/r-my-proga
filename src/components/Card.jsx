@@ -14,7 +14,7 @@ const Card = ({imageUrl, title, price, onPlus}) => {
       <div className="card">
         <img 
         src={imageUrl}
-        width={150}
+        width={120}
         alt="" />
         <p className="card-description">
           {title}

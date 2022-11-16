@@ -1,35 +1,9 @@
-import { computeHeadingLevel } from "@testing-library/react";
 import React, { useMemo } from "react";
-import { useEffect } from "react";
 import { useState } from "react";
+import Choice from "./Choice";
 
-const item = {
-  address: 'Minsk',
-  id: 'Choice1',
-}
 
-const Choice = ({title, items, onChange}) => {
-
-const onChangeHandler = (id) => () => onChange(id);
-
-  return (               
-    <div className="sum__delivery">                  
-      <h2>{title}</h2>
-      <form>
-        <ul>
-          {items.map((item) => (
-            <li onClick={onChangeHandler(item.id)}>
-              <input type="radio" id={item.id}
-              name="delivery" value="text"/>
-              <label for={item.id}>{item.address}</label>
-            </li>
-          ))}
-        </ul>
-      </form>
-    </div>
-  )}
-
-const Basket = ({cards = [], onRemove, totalprice }) => {
+const Basket = ({cards = [], onRemove, priceBasket }) => {
 
   const [delivery, setDelivery] = useState();
   const [discount, setDiscount] = useState();
@@ -71,18 +45,19 @@ const Basket = ({cards = [], onRemove, totalprice }) => {
 
   const discountValue = useMemo(() => {
     let value = 0;
+    // TO DO проверить по чистому коду
     if (discount === 'Choice3') {
       value = 10;
-    } else if (totalprice > 100 && discount === 'Choice4') {
-      value = totalprice * 0.03;
+    } else if (priceBasket > 100 && discount === 'Choice4') {
+      value = priceBasket * 0.03;
     }
     return value;
-  }, [discount, totalprice])
+  }, [discount, priceBasket])
 
-  const price = useMemo(() => {
+  const priceTotal = useMemo(() => {
     const deliveryPrice = delivery === 'Choice2' ? 5 : 0
-    return (totalprice - discountValue + deliveryPrice).toFixed(2);
-  }, [delivery, discountValue, totalprice])
+    return (priceBasket - discountValue + deliveryPrice).toFixed(2);
+  }, [delivery, discountValue, priceBasket])
 
   return (
     <>
@@ -99,7 +74,7 @@ const Basket = ({cards = [], onRemove, totalprice }) => {
                   <div className="card" style={{marginRight: '15px'}}>
                     <img 
                       src={obj.imageUrl}
-                      width={90} alt="" />
+                      width={80} alt="" />
                     <p className="card-description">
                       {obj.title}
                     </p>
@@ -123,7 +98,7 @@ const Basket = ({cards = [], onRemove, totalprice }) => {
 
                 <div className="sum__total">
                   Итого к оплате: 
-                  <span> {price} </span> руб
+                  <span> {priceTotal} </span> руб
                 </div>
               </div>
           

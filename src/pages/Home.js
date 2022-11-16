@@ -22,6 +22,7 @@ export const Home = () => {
       imageUrl: require('../images/nokia88.webp')
     }
   ]);
+  console.log(setCards);
 
   const [cardItems, setCardItems] = useState([]);
   
@@ -32,7 +33,7 @@ export const Home = () => {
 const onRemoveItemBasket = (imageUrl) => {
   setCardItems((prev) => prev.filter(cards => cards.imageUrl !== imageUrl));
 }
-const totalprice = cardItems.reduce((sum, obj) => obj.price + sum, 0);
+const priceBasket = cardItems.reduce((sum, obj) => obj.price + sum, 0);
 
 
   return (
@@ -48,7 +49,7 @@ const totalprice = cardItems.reduce((sum, obj) => obj.price + sum, 0);
             onPlus={(obj) => onAddToBasket(obj)} />
         ))}        
       </div>
-      <Basket cards={cardItems} onRemove={onRemoveItemBasket} totalprice={totalprice}
+      <Basket cards={cardItems} onRemove={onRemoveItemBasket} priceBasket={priceBasket}
       />     
     </>
   )

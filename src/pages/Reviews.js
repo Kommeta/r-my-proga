@@ -9,9 +9,9 @@ import MyButton from './../components/UI/button/MyButton'
 export const Reviews = () => {
 
   const [posts, setPosts] = useState([
-    {id: 1, title: 'JS', body: 'язык программирования, который позволяет вам создать динамически обновляемый контент, управляет мультимедиа, анимирует изображения'},
-    {id: 2, title: 'CSS', body: 'формальный язык описания внешнего вида документа (веб-страницы)'},
-    {id: 3, title: 'React', body: 'это JavaScript-библиотека для создания пользовательских интерфейсов'},
+    {id: 1, title: 'Марина', body: 'Хорошие цены и уникальный товар. Могу рекомендовать покупки в данном магазине!'},
+    {id: 2, title: 'Иванов А.', body: 'Отзывчивый персонал,быстрая отправка.'},
+    {id: 3, title: 'Алексей М.', body: 'Очень оперативно приняли заказ и в тот же день передали в службу доставки. Покупкой доволен и рад, что открыл для себя новый магазин.'},
   ])
 
   const [filter, setFilter] = useState({sort:'', query: ''})
@@ -41,7 +41,7 @@ export const Reviews = () => {
     <>
       <div className="App">
         <MyButton style={{marginTop: 50}} onClick={() => setModal(true)}>
-          Создать статью
+          Оставить отзыв
         </MyButton>
         <MyModal visible={modal} setVisible={setModal}>
           <PostForm create={createPost} />
@@ -53,7 +53,7 @@ export const Reviews = () => {
           filter={filter} 
           setFilter={setFilter}
         />
-        <PostList remove={removePost} posts={sortedAndSearchedPosts} title="Список постов" />
+        <PostList remove={removePost} posts={sortedAndSearchedPosts} title="Список отзывов" />
       </div>
     </>
   )
