@@ -3,7 +3,7 @@ import { useState } from "react";
 import Choice from "./Choice";
 
 
-const Basket = ({cards = [], onRemove, priceBasket }) => {
+const Basket = ({cards = [], onRemove, priceBasket}) => {
 
   const [delivery, setDelivery] = useState();
   const [discount, setDiscount] = useState();
@@ -82,7 +82,7 @@ const Basket = ({cards = [], onRemove, priceBasket }) => {
                       <span>Цена:</span>
                       <b>{obj.price} руб.</b>
                       <button className='btn__basket-delete'type="button" 
-                            onClick={() => onRemove(obj.imageUrl)}>
+                              onClick={() => onRemove(obj.imageUrl)}>
                         удалить             
                       </button>
                     </div>

@@ -51,12 +51,11 @@ body {
 }
 p {
   color: #4c4c4c;
-  margin-right: 10px;
 }
 
 // page HOME ------------------------------------
 h1, h2 {
-  color: #a40063;
+  color: #6800a4;
   font-weight: 400;
 }
 .cards-wrapper {
@@ -70,8 +69,9 @@ h1, h2 {
   justify-content: flex-start;
 }
 .card {
-  width: 280px;
-  box-shadow: 0 0 10px rgba(159, 0, 96, 0.4);
+  width: 220px;
+  background-color: gainsboro;
+  //box-shadow: 0 0 10px rgba(114, 0, 159, 0.4);
   border-radius: 8px;
   padding: 10px;
   text-align: center;
@@ -84,6 +84,9 @@ h1, h2 {
   }
   &-description {
     color: #4c4c4c;
+    max-height: 60px;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-size: 14px;
     margin-top: 20px;
     cursor: pointer;
@@ -101,19 +104,19 @@ h1, h2 {
 }
 .btn {
   &__add {
-    color: #a40063;
+    color: #6800a4;
     font-size: 14px;
     font-weight: 600;
     background-color: #fff;
-    border: 1px solid#a40063;
+    border: 1px solid#6800a4;
     border-radius: 6px;
     width: 100px;
     height: 38px;
     padding: 9px 12px;
-    margin: 0 0 0 10px;
+    margin: 10px 0 0 10px;
     cursor: pointer;
     &:hover {
-      background-color: #a40063;;
+      background-color: #6800a4;;
       color: #fff;
       transition: all 0.2s;
     }
@@ -126,24 +129,26 @@ h1, h2 {
     width: 100px;
     height: 38px;
     padding: 9px 12px;
-    margin: 0 0 0 10px;
+    margin: 10px 0 0 10px;
     cursor: pointer;
     &:hover {
       color: #000;
-      border-color: #000;
+      border-color: #6800a4;
       transition: all 0.2s;
     }
   }
   &__basket-buy {
-    background-color: #161616;
-    color: #ffb236;
+    background-color: #6800a4;
+    border: 2px solid #6800a4;
+    color: #fff;
     font-size: 18px;
     border-radius: 4px;
     padding: 10px 20px;
     margin: 20px 0 0;
+    cursor: pointer;
     &:hover {
-      background-color: #ff6a00;
-      color: #ffd795;
+      background-color: #161616;
+      color: #fff;
       transition: all 0.2s;
     }
   }

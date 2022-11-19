@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { useState } from "react";
 import Card from "../components/Card";
 import Basket from "../components/Basket";
 
-export const Home = () => {
+export const Home = ({addPlus}) => {
 
-  const [cards, setCards] = useState([
+  const cards = useMemo(() => [
     { id: 1,
       title: 'Nokia 3310 - двухдиапазонный сотовый телефон; с монохромным жидкокристаллическим дисплеем, поддерживающим разрешение 84 на 48 пикселей',
       price: 88.99,
@@ -20,20 +20,43 @@ export const Home = () => {
       title: 'Nokia 8800 Sirocco Edition, работающий на платформе Series 40 3rd Edition, Feature Pack 1, оснащенный TFT дисплеем, отображающим до 262 тыс. цветов и камерой на 2 Mp',
       price: 50.0,
       imageUrl: require('../images/nokia88.webp')
-    }
-  ]);
-  console.log(setCards);
+    },
+    { id: 4,
+      title: 'Nokia 1100 /GSM /экран 96x65',
+      price: 0,
+      imageUrl: require('../images/nokia-1100.webp')
+    },
+  ], []);
 
   const [cardItems, setCardItems] = useState([]);
   
   const onAddToBasket = (obj) => {
-    setCardItems(prev =>[ ...prev , obj]);
+    if (obj.price > 0) {
+      setCardItems(prev =>[ ...prev , obj]);
+    } else {
+      alert('в данный момент товар не доступен к заказу');
+      addPlus();
+    }
   }
 
-const onRemoveItemBasket = (imageUrl) => {
-  setCardItems((prev) => prev.filter(cards => cards.imageUrl !== imageUrl));
-}
-const priceBasket = cardItems.reduce((sum, obj) => obj.price + sum, 0);
+  const onRemoveItemBasket = (imageUrl) => {
+    setCardItems((prev) => prev.filter(cards => cards.imageUrl !== imageUrl));
+    console.log('onRemoveItemBasket');
+  }
+  
+//  const listCards = cards.filter(e => e.imageUrl);
+
+  // const backPlusBtn = (imageUrl) => {
+  //   if (listCards.find(listCards => listCards.imageUrl == imageUrl)) {
+  //     console.log('img=img');
+  //     //addPlus();
+  //   } else {
+  //     console.log('ne rabotaet');
+  //   }
+  //   console.log('finish');
+  // }
+
+  const priceBasket = cardItems.reduce((sum, obj) => obj.price + sum, 0);
 
 
   return (
@@ -46,10 +69,13 @@ const priceBasket = cardItems.reduce((sum, obj) => obj.price + sum, 0);
             title={card.title}
             price={card.price}
             imageUrl={card.imageUrl}
-            onPlus={(obj) => onAddToBasket(obj)} />
+            onPlus={(obj) => onAddToBasket(obj)}
+          />
         ))}        
       </div>
-      <Basket cards={cardItems} onRemove={onRemoveItemBasket} priceBasket={priceBasket}
+      <Basket cards={cardItems} 
+              onRemove={onRemoveItemBasket}
+              priceBasket={priceBasket}
       />     
     </>
   )
