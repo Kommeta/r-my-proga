@@ -1,8 +1,19 @@
 .mySelect {
   height: 35px;
-  border-radius: 8px;
-  border-color: darkgreen;
-  padding: 10px 15px;
+  border-radius: 5px;
+  border-color: #6800a4;
+  color: #161616;
+  font-size: 16px;
+  padding: 4px 15px;
   background-color: #fff;
   margin: 10px 0;
+  cursor: pointer;
+  &:hover {
+    transition: all 0.2s;
+    border-color: #e99300;
+  }
+  &:focus-visible {
+    outline: none;
+    border: 1px solid #33ff00;
+  }
 }
