@@ -1,0 +1,44 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+
+  "profile": {
+    "name": "typicode"
+  },
+
+  "cards": [
+    { "id": 1,
+      "title": "Nokia 3310 - двухдиапазонный сотовый телефон; с монохромным жидкокристаллическим дисплеем, поддерживающим разрешение 84 на 48 пикселей",
+      "price": 88.99,
+      "imageUrl": "/static/media/nokia.b63c5fd70683f207a4e8.webp"
+    },
+    { "id": 2,
+      "title": "Siemens ME45 – стильный телефон, обладающий влаго- и пылезащитным корпусом. Поддержка WAP 1.2.1 и GPRS",
+      "price": 99.0,
+      "imageUrl": "/static/media/siemens.2fd962944dbdf315dabd.webp"
+    },
+    { "id": 3,
+      "title": "Nokia 8800 Sirocco Edition, работающий на платформе Series 40 3rd Edition, Feature Pack 1, оснащенный TFT дисплеем, отображающим до 262 тыс. цветов и камерой на 2 Mp",
+      "price": 50.0,
+      "imageUrl": "/static/media/nokia88.88943005254e930f2275.webp"
+    },
+    { "id": 4,
+      "title": "Nokia 1100 /GSM /экран 96x65",
+      "price": 0,
+      "imageUrl": "/static/media/nokia-1100.681b9bc0b693af557ce5.webp"
+    }
+  ]
+}

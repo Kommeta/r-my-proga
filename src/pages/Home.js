@@ -4,32 +4,27 @@ import Card from "../components/Card";
 import Basket from "../components/Basket";
 import SelectPrice from "../components/UI/select/SelectPrice";
 import MyInput from "../components/UI/input/MyInput";
+import { useEffect } from "react";
+
 
 export const Home = ({addPlus}) => {
 
   // каталог товаров
-  const [cards, setCards] = useState([
-    { id: 1,
-      title: 'Nokia 3310 - двухдиапазонный сотовый телефон; с монохромным жидкокристаллическим дисплеем, поддерживающим разрешение 84 на 48 пикселей',
-      price: 88.99,
-      imageUrl: require('../images/nokia.webp')
-    },
-    { id: 2,
-      title: 'Siemens ME45 – стильный телефон, обладающий влаго- и пылезащитным корпусом. Поддержка WAP 1.2.1 и GPRS',
-      price: 99.0,
-      imageUrl: require('../images/siemens.webp')
-    },
-    { id: 3,
-      title: 'Nokia 8800 Sirocco Edition, работающий на платформе Series 40 3rd Edition, Feature Pack 1, оснащенный TFT дисплеем, отображающим до 262 тыс. цветов и камерой на 2 Mp',
-      price: 50.0,
-      imageUrl: require('../images/nokia88.webp')
-    },
-    { id: 4,
-      title: 'Nokia 1100 /GSM /экран 96x65',
-      price: 0,
-      imageUrl: require('../images/nokia-1100.webp')
-    },
-  ]);
+  const [cards, setCards] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:3000/cards')
+    .then((res) => {
+      return res.json();
+    })
+    .then((json) => {
+      
+      console.log(json);
+      setCards(json);
+    });
+  }, []);
+
+
   // товары в корзине 
   const [cardItems, setCardItems] = useState([]);
   
