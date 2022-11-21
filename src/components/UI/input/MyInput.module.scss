@@ -1,8 +1,14 @@
 .myInput {
   width: 100%;
-  min-height: 45px;
-  padding: 5px 15px;
-  margin: 5px 0;
-  border: 1px solid #0e3810;
+  height: 35px;
   border-radius: 5px;
+  border: 1px solid #6800a4;
+  color: #161616;
+  font-size: 16px;
+  padding: 5px 15px;
+  margin: 20px 10px 10px 0;
+  &:focus-visible {
+    outline: none;
+    border: 1px solid #33ff00;
+  }
 }

@@ -71,21 +71,25 @@ const Basket = ({cards = [], onRemove, priceBasket}) => {
               <div className="cards-wrapper__basket">
                 {
                 cards.map((obj) => (                
-                  <div className="card" style={{marginRight: '15px'}}>
+                  <div className="card card-basket" style={{marginRight: '15px'}}>
                     <img 
                       src={obj.imageUrl}
-                      width={80} alt="" />
-                    <p className="card-description">
-                      {obj.title}
-                    </p>
-                    <div className="card-price">
-                      <span>Цена:</span>
-                      <b>{obj.price} руб.</b>
-                      <button className='btn__basket-delete'type="button" 
-                              onClick={() => onRemove(obj.imageUrl)}>
-                        удалить             
-                      </button>
+                      width={80} alt="" 
+                    />
+                    <div>
+                      <p className="card-description">
+                        {obj.title}
+                      </p>
+                      <div className="card-price">
+                        <span>Цена:</span>
+                        <b>{obj.price} руб.</b>
+                        <button className='btn__basket-delete'type="button" 
+                                onClick={() => onRemove(obj.imageUrl)}>
+                          удалить             
+                        </button>
+                      </div>
                     </div>
+                      
                   </div>
                 ))}                
               </div>

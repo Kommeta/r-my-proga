@@ -12,7 +12,7 @@ function App() {
     <BrowserRouter>
     <div className="wrapper">
       <Header/>
-      <div style={{padding: '20 0', margin: '0 auto', width: '940px'}}>
+      <div style={{padding: '40px 0', margin: '0 auto', width: '940px'}}>
         <Routes>
           <Route path={'/'} exact element={<Home />} />
           <Route path={'/reviews'} element={<Reviews />} />
