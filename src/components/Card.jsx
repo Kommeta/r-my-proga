@@ -15,6 +15,7 @@ const Card = ({imageUrl, title, price, onPlus}) => {
         <img 
         src={imageUrl}
         width={100}
+        height={150}
         alt="" />
         <p className="card-description">
           {title}

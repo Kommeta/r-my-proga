@@ -9,19 +9,21 @@ import Footer from './components/Footer';
 
 function App() {
   return (
-    <BrowserRouter>
-    <div className="wrapper">
-      <Header/>
-      <div style={{padding: '40px 0', margin: '0 auto', width: '940px'}}>
-        <Routes>
-          <Route path={'/'} exact element={<Home />} />
-          <Route path={'/reviews'} element={<Reviews />} />
-          <Route path={'/about'} element={<About />} />
-        </Routes>
-      </div>
-    </div> 
-    <Footer/>
-    </BrowserRouter>
+    <React.StrictMode>
+      <BrowserRouter>
+      <div className="wrapper">
+        <Header/>
+        <div style={{padding: '40px 0', margin: '0 auto', width: '940px'}}>
+          <Routes>
+            <Route path={'/'} exact element={<Home />} />
+            <Route path={'/reviews'} element={<Reviews />} />
+            <Route path={'/about'} element={<About />} />
+          </Routes>
+        </div>
+      </div> 
+      <Footer/>
+      </BrowserRouter>
+    </React.StrictMode>
   );
 }
 

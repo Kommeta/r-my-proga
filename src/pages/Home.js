@@ -18,8 +18,6 @@ export const Home = ({addPlus}) => {
       return res.json();
     })
     .then((json) => {
-      
-      console.log(json);
       setCards(json);
     });
   }, []);
@@ -38,20 +36,7 @@ export const Home = ({addPlus}) => {
   }
   const onRemoveItemBasket = (imageUrl) => {
     setCardItems((prev) => prev.filter(cards => cards.imageUrl !== imageUrl));
-    console.log('onRemoveItemBasket');
   }
-  
-//  const listCards = cards.filter(e => e.imageUrl);
-
-  // const backPlusBtn = (imageUrl) => {
-  //   if (listCards.find(listCards => listCards.imageUrl == imageUrl)) {
-  //     console.log('img=img');
-  //     //addPlus();
-  //   } else {
-  //     console.log('ne rabotaet');
-  //   }
-  //   console.log('finish');
-  // }
 
   const priceBasket = cardItems.reduce((sum, obj) => obj.price + sum, 0);
   //  сортировка по цене
