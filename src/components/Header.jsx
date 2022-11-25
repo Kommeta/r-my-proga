@@ -1,6 +1,5 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import logo from "./../images/logo-kubtel.svg"
 import "./../styles/Header.scss"
 
 const Header = () =>  {
@@ -9,7 +8,7 @@ const Header = () =>  {
       <nav>
         <div className="header-content">
           <img 
-            src={logo} 
+            src="/images/logo-kubtel.svg"
             height="50"
             alt="logotip" 
           />

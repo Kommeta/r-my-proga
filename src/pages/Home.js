@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import Card from "../components/Card";
 import Basket from "../components/Basket";
 import SelectPrice from "../components/UI/select/SelectPrice";
 import MyInput from "../components/UI/input/MyInput";
-import { useEffect } from "react";
+import axios from "axios";
 
 
 export const Home = ({addPlus}) => {
@@ -13,13 +13,23 @@ export const Home = ({addPlus}) => {
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/cards')
-    .then((res) => {
-      return res.json();
+
+    // fetch('http://localhost:3000/cards')
+    // .then((res) => {
+    //   return res.json();
+    // })
+    // .then((json) => {
+    //   setCards(json);
+    // });
+
+    axios.get('http://localhost:3000/cards').then((res) => {
+      setCards(res.data);
     })
-    .then((json) => {
-      setCards(json);
-    });
+
+    axios.get('http://localhost:3000/basket-cards').then((res) => {
+      setCardItems(res.data);
+    })
+
   }, []);
 
 
@@ -28,20 +38,24 @@ export const Home = ({addPlus}) => {
   
   const onAddToBasket = (obj) => {
     if (obj.price > 0) {
+      axios.post('http://localhost:3000/basket-cards', obj)
       setCardItems(prev =>[ ...prev , obj]);
     } else {
       alert('в данный момент товар не доступен к заказу');
+      // костыль с кнопкой добавления товара
       addPlus();
     }
   }
-  const onRemoveItemBasket = (imageUrl) => {
-    setCardItems((prev) => prev.filter(cards => cards.imageUrl !== imageUrl));
+  const onRemoveItemBasket = (id) => {
+    axios.delete(`http://localhost:3000/basket-cards/${id}`);
+    setCardItems((prev) => prev.filter(cards => cards.id !== id));
   }
 
   const priceBasket = cardItems.reduce((sum, obj) => obj.price + sum, 0);
   //  сортировка по цене
   const [selectedSort, setSelectedSort] = useState('');
 
+  // прочитать код по слогам
   const sortCards = (sort) => {
     setSelectedSort(sort);
     setCards([...cards].sort((a,b) => a.price[sort] > b.price[sort] ? 1 : -1))

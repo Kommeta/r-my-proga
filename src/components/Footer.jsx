@@ -1,12 +1,11 @@
 import React from "react";
-import logo from "./../images/logo-kubtel.svg"
 
 const Footer = () =>  {
   return (
     <>
       <div className="footer" >
         <img 
-          src={logo} 
+          src="/images/logo-kubtel.svg" 
           height="30"
           alt="logotip" 
         />

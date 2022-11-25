@@ -13,11 +13,11 @@ const Basket = ({cards = [], onRemove, priceBasket}) => {
       title: 'Доставка товара:',
       items: [
         {
-          id: 'Choice1',
+          id: 'choice-city',
           address: 'по г.Минска'
         },
         {
-          id: 'Choice2',
+          id: 'choice-out-city',
           address: 'за пределы г.Минска'
         }
       ],
@@ -27,15 +27,15 @@ const Basket = ({cards = [], onRemove, priceBasket}) => {
       title: 'Ваша скидка на выбор:',
       items: [
         {
-          id: 'Choice3',
+          id: 'choice-discount1',
           address: 'скидка 10 руб от суммы товара'
         },
         {
-          id: 'Choice4',
+          id: 'choice-discount2',
           address: 'скидка 3 % при покупке товаров стоимомтью свыше 100 руб.'
         },
         {
-          id: 'Choice5',
+          id: 'choice-discount3',
           address: 'дополнительный товара к заказу, стоимостью до 15 руб.'
         }
       ],
@@ -46,16 +46,16 @@ const Basket = ({cards = [], onRemove, priceBasket}) => {
   const discountValue = useMemo(() => {
     let value = 0;
     // TO DO проверить по чистому коду
-    if (discount === 'Choice3') {
+    if (discount === 'choice-discount1') {
       value = 10;
-    } else if (priceBasket > 100 && discount === 'Choice4') {
+    } else if (priceBasket > 100 && discount === 'choice-discount2') {
       value = priceBasket * 0.03;
     }
     return value;
   }, [discount, priceBasket])
 
-  const priceTotal = useMemo(() => {
-    const deliveryPrice = delivery === 'Choice2' ? 5 : 0
+  const priceTotalBasket = useMemo(() => {
+    const deliveryPrice = delivery === 'choice-out-city' ? 5 : 0
     return (priceBasket - discountValue + deliveryPrice).toFixed(2);
   }, [delivery, discountValue, priceBasket])
 
@@ -74,7 +74,7 @@ const Basket = ({cards = [], onRemove, priceBasket}) => {
                   <div className="card card-basket" style={{marginRight: '15px'}}>
                     <img 
                       src={obj.imageUrl}
-                      width={80} alt="" 
+                      width={80} height={100} alt="" 
                     />
                     <div>
                       <p className="card-description">
@@ -84,7 +84,7 @@ const Basket = ({cards = [], onRemove, priceBasket}) => {
                         <span>Цена:</span>
                         <b>{obj.price} руб.</b>
                         <button className='btn__basket-delete'type="button" 
-                                onClick={() => onRemove(obj.imageUrl)}>
+                                onClick={() => onRemove(obj.id)}>
                           удалить             
                         </button>
                       </div>
@@ -102,7 +102,7 @@ const Basket = ({cards = [], onRemove, priceBasket}) => {
 
                 <div className="sum__total">
                   Итого к оплате: 
-                  <span> {priceTotal} </span> руб
+                  <span> {priceTotalBasket} </span> руб
                 </div>
               </div>
           
@@ -116,7 +116,7 @@ const Basket = ({cards = [], onRemove, priceBasket}) => {
             : 
             
             <div className="basket-title">
-              Ваша корзина пуста :(
+              Ваша корзина пуста 
             </div>
         }
 
