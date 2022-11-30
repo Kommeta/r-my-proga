@@ -12,6 +12,9 @@ export const Home = ({addPlus}) => {
   // каталог товаров
   const [cards, setCards] = useState([]);
 
+  // товары в корзине 
+  const [cardItems, setCardItems] = useState([]);
+
   useEffect(() => {
 
     // fetch('http://localhost:3000/cards')
@@ -29,12 +32,9 @@ export const Home = ({addPlus}) => {
     axios.get('http://localhost:3000/basket-cards').then((res) => {
       setCardItems(res.data);
     })
+    console.log('useEffect');
 
   }, []);
-
-
-  // товары в корзине 
-  const [cardItems, setCardItems] = useState([]);
   
   const onAddToBasket = (obj) => {
     if (obj.price > 0) {
@@ -42,8 +42,8 @@ export const Home = ({addPlus}) => {
       setCardItems(prev =>[ ...prev , obj]);
     } else {
       alert('в данный момент товар не доступен к заказу');
-      // костыль с кнопкой добавления товара
-      addPlus();
+      // to do костыль с кнопкой добавления товара
+      //addPlus();
     }
   }
   const onRemoveItemBasket = (id) => {
@@ -55,7 +55,8 @@ export const Home = ({addPlus}) => {
   //  сортировка по цене
   const [selectedSort, setSelectedSort] = useState('');
 
-  // прочитать код по слогам
+  // to do значение кода: 
+  // функция может вернуть 0, 1 или -1, в зависимости от возвр. значения метод sort сделает свой выбор
   const sortCards = (sort) => {
     setSelectedSort(sort);
     setCards([...cards].sort((a,b) => a.price[sort] > b.price[sort] ? 1 : -1))

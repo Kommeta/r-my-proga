@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
 import { useState } from "react";
 import Choice from "./Choice";
+import ButtonSmall from "./UI/button/ButtonSmall";
 
 
 const Basket = ({cards = [], onRemove, priceBasket}) => {
@@ -76,17 +77,23 @@ const Basket = ({cards = [], onRemove, priceBasket}) => {
                       src={obj.imageUrl}
                       width={80} height={100} alt="" 
                     />
-                    <div>
+                    <div style={{marginLeft: '10px'}}>
                       <p className="card-description">
                         {obj.title}
                       </p>
                       <div className="card-price">
                         <span>Цена:</span>
                         <b>{obj.price} руб.</b>
-                        <button className='btn__basket-delete'type="button" 
-                                onClick={() => onRemove(obj.id)}>
-                          удалить             
-                        </button>
+                        <ButtonSmall
+                          className='btn-grey'
+                          onClick={() => onRemove(obj.id)}> 
+                        удалить из корзины
+                        </ButtonSmall>
+                        <div className="counter-card">
+                          <span style={{borderRight: '1px solid rgb(239 239 239)'}}>-</span>
+                          1
+                          <span style={{borderLeft: '1px solid rgb(239 239 239)'}}>+</span>
+                        </div>
                       </div>
                     </div>
                       

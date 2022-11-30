@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import ButtonSmall from "./UI/button/ButtonSmall";
 
 const Card = ({imageUrl, title, price, onPlus}) => {
 
@@ -23,13 +24,12 @@ const Card = ({imageUrl, title, price, onPlus}) => {
         <div className="card-price">
           <span>Цена:</span>
           <b>{price} руб.</b>
-          <button 
-            className={`sidebar ${isAdded ? 'btn__basket-delete' : 'btn__add' }`}
+          <ButtonSmall 
+            className={`sidebar ${isAdded ? 'btn-disabled ' : 'btn-fiolet' }`}
             onClick={onClickPlus}
-            type="button"
             >
               {isAdded ? 'добавлен' : 'в корзину' }              
-          </button>
+          </ButtonSmall>
         </div>
       </div>
     </>

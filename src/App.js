@@ -1,5 +1,6 @@
 import React from 'react';
 import './styles/App.scss';
+import './styles/Button.scss';
 import {BrowserRouter, Routes ,Route} from 'react-router-dom'
 import { Home } from './pages/Home';
 import Header from './components/Header';
