@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
 import { useState } from "react";
 import Choice from "./Choice";
+import CounterCard from "./CounterCard";
 import ButtonSmall from "./UI/button/ButtonSmall";
 
 
@@ -60,6 +61,8 @@ const Basket = ({cards = [], onRemove, priceBasket}) => {
     return (priceBasket - discountValue + deliveryPrice).toFixed(2);
   }, [delivery, discountValue, priceBasket])
 
+  
+
   return (
     <>
       <div style={{margin: '130px auto 0 auto', paddingTop: '40px', width: '940', borderTop:  '1px solid #000'}}>
@@ -72,7 +75,7 @@ const Basket = ({cards = [], onRemove, priceBasket}) => {
               <div className="cards-wrapper__basket">
                 {
                 cards.map((obj) => (                
-                  <div className="card card-basket" style={{marginRight: '15px'}}>
+                  <div key={obj.id} className="card card-basket" style={{marginRight: '15px'}}>
                     <img 
                       src={obj.imageUrl}
                       width={80} height={100} alt="" 
@@ -89,14 +92,9 @@ const Basket = ({cards = [], onRemove, priceBasket}) => {
                           onClick={() => onRemove(obj.id)}> 
                         удалить из корзины
                         </ButtonSmall>
-                        <div className="counter-card">
-                          <span style={{borderRight: '1px solid rgb(239 239 239)'}}>-</span>
-                          1
-                          <span style={{borderLeft: '1px solid rgb(239 239 239)'}}>+</span>
-                        </div>
+                        <CounterCard/>
                       </div>
                     </div>
-                      
                   </div>
                 ))}                
               </div>
@@ -104,7 +102,7 @@ const Basket = ({cards = [], onRemove, priceBasket}) => {
               <div className="block-sum">
 
                 {
-                  choices.map((value) => <Choice {...value} />)
+                  choices.map((value) => <Choice {...value} key={value.id} />)
                 }
 
                 <div className="sum__total">

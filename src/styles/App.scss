@@ -169,11 +169,14 @@ h1, h2 {
   background-color: #ecdafc;
   margin: 15px auto;
   max-width: 150px;
-  span {
+  button {
     padding: 0px 20px;
     margin: 0;
     font-size: 32px;
     color: #6800a4;
+    background-color: inherit;
+    text-align: center;
+    border: none;
     cursor: pointer;
     &:hover {
       color: green;

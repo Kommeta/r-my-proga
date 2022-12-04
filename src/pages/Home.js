@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "../components/Card";
 import Basket from "../components/Basket";
 import SelectPrice from "../components/UI/select/SelectPrice";
@@ -14,6 +13,14 @@ export const Home = ({addPlus}) => {
 
   // товары в корзине 
   const [cardItems, setCardItems] = useState([]);
+  async function fetchCardItem() {
+    try {
+      const res = await axios.get('http://localhost:3000/basket-cards')
+      setCardItems(res.data);
+    } catch(e) {
+        console.log(e);
+    }
+  }
 
   useEffect(() => {
 
@@ -29,9 +36,12 @@ export const Home = ({addPlus}) => {
       setCards(res.data);
     })
 
-    axios.get('http://localhost:3000/basket-cards').then((res) => {
-      setCardItems(res.data);
-    })
+    // axios.get('http://localhost:3000/basket-cards').then((res) => {
+    //   setCardItems(res.data);
+    // })
+
+    fetchCardItem()
+
     console.log('useEffect');
 
   }, []);
