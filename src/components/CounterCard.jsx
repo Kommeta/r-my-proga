@@ -1,27 +1,31 @@
-import React, {useState} from "react";
+import React from "react";
 
 const CounterCard = () => {
 
-  const [counterItem, setCounterItem] = useState(1);
+//const [valueItem, setValueItem] = useState(1);
 
-  const handleIncrement = () => {
-    setCounterItem((prevState) => prevState + 1);
-  }
+// const formatValue = () => {
+//   return valueItem === 0 ? "пусто" : valueItem;
+// };
+
+  // const handleIncrement = () => {
+  //   setValueItem((prevState) => prevState + 1);
+  // }
   
-  const handleDecrement = () => {
-    setCounterItem((prevState) => prevState - 1);
-  }
+  // const handleDecrement = () => {
+  //   setValueItem((prevState) => prevState - 1);
+  // }
 
   return (
     <div className="counter-card">
       <button style={{borderRight: '1px solid rgb(239 239 239)'}}
-              onClick={handleDecrement}
+              // onClick={handleDecrement}
       >
       -
       </button>
-        {counterItem}
+        
       <button style={{borderLeft: '1px solid rgb(239 239 239)'}}
-              onClick={handleIncrement}
+              // onClick={handleIncrement}
       >
       +
       </button>

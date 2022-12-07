@@ -6,13 +6,14 @@ import MyInput from "../components/UI/input/MyInput";
 import axios from "axios";
 
 
-export const Home = ({addPlus}) => {
+export const Home = () => {
 
   // каталог товаров
   const [cards, setCards] = useState([]);
 
   // товары в корзине 
   const [cardItems, setCardItems] = useState([]);
+
   async function fetchCardItem() {
     try {
       const res = await axios.get('http://localhost:3000/basket-cards')
@@ -23,7 +24,6 @@ export const Home = ({addPlus}) => {
   }
 
   useEffect(() => {
-
     // fetch('http://localhost:3000/cards')
     // .then((res) => {
     //   return res.json();
@@ -39,17 +39,15 @@ export const Home = ({addPlus}) => {
     // axios.get('http://localhost:3000/basket-cards').then((res) => {
     //   setCardItems(res.data);
     // })
-
     fetchCardItem()
-
-    console.log('useEffect');
-
   }, []);
+
   
   const onAddToBasket = (obj) => {
     if (obj.price > 0) {
       axios.post('http://localhost:3000/basket-cards', obj)
-      setCardItems(prev =>[ ...prev , obj]);
+      setCardItems((prev) => [ ...prev , obj]);
+      console.log(obj);
     } else {
       alert('в данный момент товар не доступен к заказу');
       // to do костыль с кнопкой добавления товара
@@ -104,6 +102,7 @@ export const Home = ({addPlus}) => {
         {filteredCards.map((card) => (
           <Card 
             key={card.id}
+            amount={card.amount}
             title={card.title}
             price={card.price}
             imageUrl={card.imageUrl}
@@ -111,7 +110,7 @@ export const Home = ({addPlus}) => {
           />
         ))}        
       </div>
-      <Basket cards={cardItems} 
+      <Basket cardsList={cardItems} 
               onRemove={onRemoveItemBasket}
               priceBasket={priceBasket}
       />     

@@ -1,17 +1,17 @@
 import React, { useMemo } from "react";
 import { useState } from "react";
 import Choice from "./Choice";
-import CounterCard from "./CounterCard";
 import ButtonSmall from "./UI/button/ButtonSmall";
 
 
-const Basket = ({cards = [], onRemove, priceBasket}) => {
+const Basket = ({cardsList = [], onRemove, priceBasket}) => {
 
   const [delivery, setDelivery] = useState();
   const [discount, setDiscount] = useState();
 
   const choices = useMemo( () => [
     {
+      id: 'delivery',
       title: 'Доставка товара:',
       items: [
         {
@@ -26,6 +26,7 @@ const Basket = ({cards = [], onRemove, priceBasket}) => {
       onChange: (id) => setDelivery(id)
     },
     {
+      id: 'discount',
       title: 'Ваша скидка на выбор:',
       items: [
         {
@@ -61,7 +62,14 @@ const Basket = ({cards = [], onRemove, priceBasket}) => {
     return (priceBasket - discountValue + deliveryPrice).toFixed(2);
   }, [delivery, discountValue, priceBasket])
 
+    const [valueItem, setValueItem] = useState(1);
+    const handleIncrement = () => {
+    setValueItem((prevState) => prevState + 1);
+  }
   
+  const handleDecrement = () => {
+    setValueItem((prevState) => prevState - 1);
+  }
 
   return (
     <>
@@ -69,12 +77,12 @@ const Basket = ({cards = [], onRemove, priceBasket}) => {
         <h1>Ваш заказ</h1>
 
         {
-          cards.length > 0 ? 
+          cardsList.length > 0 ? 
             <div>
 
               <div className="cards-wrapper__basket">
                 {
-                cards.map((obj) => (                
+                cardsList.map((obj) => (                
                   <div key={obj.id} className="card card-basket" style={{marginRight: '15px'}}>
                     <img 
                       src={obj.imageUrl}
@@ -92,7 +100,21 @@ const Basket = ({cards = [], onRemove, priceBasket}) => {
                           onClick={() => onRemove(obj.id)}> 
                         удалить из корзины
                         </ButtonSmall>
-                        <CounterCard/>
+
+                        <div className="counter-card">
+                          <button style={{borderRight: '1px solid rgb(239 239 239)'}}
+                                  onClick={handleDecrement}
+                          >
+                          -
+                          </button>
+                            {valueItem}
+                          <button style={{borderLeft: '1px solid rgb(239 239 239)'}}
+                                  onClick={handleIncrement}
+                          >
+                          +
+                          </button>
+                        </div>
+
                       </div>
                     </div>
                   </div>
@@ -102,8 +124,13 @@ const Basket = ({cards = [], onRemove, priceBasket}) => {
               <div className="block-sum">
 
                 {
-                  choices.map((value) => <Choice {...value} key={value.id} />)
-                }
+                  choices.map((value) => (
+                    <Choice 
+                    key={value.id}
+                      {...value} 
+                    />
+                  ))
+                } 
 
                 <div className="sum__total">
                   Итого к оплате: 
