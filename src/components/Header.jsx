@@ -1,8 +1,12 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./../styles/Header.scss"
+import avatarLogo from "../assets/avatar-no.png"
 
 const Header = () =>  {
+
+  
+
   return (
     <>
       <nav>
@@ -23,6 +27,10 @@ const Header = () =>  {
               О нас
             </NavLink>
           </div>
+          <NavLink to="/profile">
+            <img src={avatarLogo} alt="" width="50px"/>
+          </NavLink>
+
         </div>    
       </nav>
     

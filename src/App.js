@@ -7,6 +7,7 @@ import Header from './components/Header';
 import { Reviews } from './pages/Reviews';
 import { About } from './pages/About';
 import Footer from './components/Footer';
+import { Profile } from './pages/Profile';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path={'/'} exact element={<Home />} />
             <Route path={'/reviews'} element={<Reviews />} />
             <Route path={'/about'} element={<About />} />
+            <Route path={'/profile'} element={<Profile />} />
           </Routes>
         </div>
       </div> 

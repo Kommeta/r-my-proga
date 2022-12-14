@@ -62,7 +62,11 @@ const Basket = ({cardsList = [], onRemove, priceBasket}) => {
     return (priceBasket - discountValue + deliveryPrice).toFixed(2);
   }, [delivery, discountValue, priceBasket])
 
-    const [valueItem, setValueItem] = useState(1);
+    //let quantityProduct = cardsList.find(item => item.amount !== 0).amount;
+    
+    let value = 1;
+    const [valueItem, setValueItem] = useState(value);
+
     const handleIncrement = () => {
     setValueItem((prevState) => prevState + 1);
   }

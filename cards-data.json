@@ -46,13 +46,19 @@
       "amount": 1
     }
   ],
-  "basket-cards": [
+  "basket-cards": [],
+  "images": [
     {
-      "imageUrl": "/images/siemens.webp",
-      "title": "Siemens ME45 – стильный телефон, обладающий влаго- и пылезащитным корпусом. Поддержка WAP 1.2.1 и GPRS",
-      "price": 99,
-      "amount": 1,
-      "id": 1
+      "original": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fm.facebook.com%2Fwildnatures&psig=AOvVaw2CNA_iQwAE0HanQHvesuuM&ust=1670874356443000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCJjMgZaq8vsCFQAAAAAdAAAAABAJ"
+    },
+    {
+      "original": "https://www.google.com/imgres?imgurl=https%3A%2F%2F24warez.ru%2Fuploads%2Fposts%2F2019-02%2F280219%2F251213%2F6.jpg&imgrefurl=https%3A%2F%2F24warez.ru%2Fmain%2Fphoto%2F1157552574-pozitivnaya-dikaya-priroda-v-ob.html&tbnid=hZO7h7SlFYqeOM&vet=10CBYQxiAoCGoXChMImMyBlqry-wIVAAAAAB0AAAAAEAw..i&docid=-h1W3Dq8oG43EM&w=880&h=695&itg=1&q=%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8&hl=ru&ved=0CBYQxiAoCGoXChMImMyBlqry-wIVAAAAAB0AAAAAEAw"
+    },
+    {
+      "original": "https://www.google.com/imgres?imgurl=https%3A%2F%2F24warez.ru%2Fuploads%2Fposts%2F2019-02%2F280219%2F251213%2F20.jpg&imgrefurl=https%3A%2F%2F24warez.ru%2Fmain%2Fphoto%2F1157552574-pozitivnaya-dikaya-priroda-v-ob.html&tbnid=UjApbnepjveDAM&vet=10CBgQxiAoCmoXChMImMyBlqry-wIVAAAAAB0AAAAAEAw..i&docid=-h1W3Dq8oG43EM&w=880&h=720&itg=1&q=%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B8&hl=ru&ved=0CBgQxiAoCmoXChMImMyBlqry-wIVAAAAAB0AAAAAEAw"
     }
+  ],
+  "avatar": [
+
   ]
 }

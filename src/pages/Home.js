@@ -40,6 +40,9 @@ export const Home = () => {
     //   setCardItems(res.data);
     // })
     fetchCardItem()
+
+    
+
   }, []);
 
   
@@ -76,6 +79,8 @@ export const Home = () => {
     return card.title.toLowerCase().includes(searchQueryCard.toLowerCase())
   })
 
+
+
   return (
     <>
       <h1>Каталог товаров</h1>
@@ -109,6 +114,9 @@ export const Home = () => {
             onPlus={(obj) => onAddToBasket(obj)}
           />
         ))}        
+      </div>
+      <div>
+
       </div>
       <Basket cardsList={cardItems} 
               onRemove={onRemoveItemBasket}
