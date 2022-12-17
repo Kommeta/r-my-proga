@@ -27,10 +27,24 @@ const Header = () =>  {
               О нас
             </NavLink>
           </div>
-          <NavLink to="/profile">
-            <img src={avatarLogo} alt="" width="50px"/>
-          </NavLink>
 
+          <div className="link-navigation">
+            <NavLink to="/authorization">
+              Войти
+            </NavLink>
+          </div>
+          
+
+          <div style={{display: 'flex', alignItems: 'center'}}>            
+            <NavLink to="/profile">
+            <img src={avatarLogo} alt="" width="50px"/>
+            </NavLink>
+
+            <NavLink to="/profile">
+              <img src="/images/exit-icon.png" alt="выход" width={30} style={{marginLeft: '20px'}} />
+            </NavLink>
+          </div>
+          
         </div>    
       </nav>
     

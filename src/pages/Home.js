@@ -41,8 +41,6 @@ export const Home = () => {
     // })
     fetchCardItem()
 
-    
-
   }, []);
 
   

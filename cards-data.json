@@ -46,7 +46,15 @@
       "amount": 1
     }
   ],
-  "basket-cards": [],
+  "basket-cards": [
+    {
+      "imageUrl": "/images/nokia.webp",
+      "title": "Nokia 3310 - двухдиапазонный сотовый телефон; с монохромным жидкокристаллическим дисплеем, поддерживающим разрешение 84 на 48 пикселей",
+      "price": 88.99,
+      "amount": 1,
+      "id": 1
+    }
+  ],
   "images": [
     {
       "original": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fm.facebook.com%2Fwildnatures&psig=AOvVaw2CNA_iQwAE0HanQHvesuuM&ust=1670874356443000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCJjMgZaq8vsCFQAAAAAdAAAAABAJ"
@@ -59,6 +67,11 @@
     }
   ],
   "avatar": [
-
+    {
+      "id": 1
+    },
+    {
+      "id": 2
+    }
   ]
 }

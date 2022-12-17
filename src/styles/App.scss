@@ -184,6 +184,15 @@ h1, h2 {
     }
   }
 }
+button:disabled {
+  color: #4c4c4c;
+  border-color: #4c4c4c;
+  cursor: not-allowed;
+  &:hover {
+    background-color: #fff;
+    color: #4c4c4c;
+  }
+}
 
 .avatar-profile {
   margin: 15px 0;
