@@ -219,3 +219,24 @@ button:disabled {
     background-color: #e8d1fc;
   }
 }
+
+.block-link {
+  margin-top: 45px;
+  color: #333;
+  border-top: 2px solid #d6bcf8;
+  border-bottom: 2px solid #d6bcf8;
+  padding: 15px 0;
+  h3 {
+    margin-bottom: 15px;
+  }
+  a {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #6800a4;
+    font-size: 16px;
+    &:hover {
+      transition: all 0.2s;
+      font-weight: 800;
+    }
+  }
+}

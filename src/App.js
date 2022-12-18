@@ -8,7 +8,8 @@ import { Reviews } from './pages/Reviews';
 import { About } from './pages/About';
 import Footer from './components/Footer';
 import { Profile } from './pages/Profile';
-import { Authorization } from './pages/Authorization';
+import { Registration } from './pages/Registration';
+import { SignIn } from './pages/SignIn';
 
 function App() {
   return (
@@ -22,7 +23,8 @@ function App() {
             <Route path={'/reviews'} element={<Reviews />} />
             <Route path={'/about'} element={<About />} />
             <Route path={'/profile'} element={<Profile />} />
-            <Route path={'/authorization'} element={<Authorization />} />
+            <Route path={'/registration'} element={<Registration />} />
+            <Route path={'/sign-in'} element={<SignIn />} />
           </Routes>
         </div>
       </div> 

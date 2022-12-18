@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState} from "react";
+import { useEffect } from "react";
 //import { useEffect } from "react";
 import ButtonSmall from "../components/UI/button/ButtonSmall";
 
@@ -23,9 +24,9 @@ export const Profile = () => {
     setAvatarImage(files[0]);
     fileReader.readAsDataURL(files[0]);
 
-    const formData = new FormData()
-    formData.append('file', files[0])
-    axios.post('http://localhost:3000/avatar', formData)
+    // const formData = new FormData()
+    // formData.append('file', files[0])
+    // axios.post('http://localhost:3000/avatar', formData)
   }
 
 
@@ -33,6 +34,7 @@ export const Profile = () => {
   return (
     <>
       <h1>Кабинет пользователя</h1>
+      <h2>Пользователь: {}</h2>
       <div className="avatar-profile">
         <img src={imageUrl ? imageUrl : '/images/avatar-no.png'} 
           alt="avatar" 
