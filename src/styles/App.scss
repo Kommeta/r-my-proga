@@ -55,7 +55,7 @@ p {
 }
 
 // page HOME ------------------------------------
-h1, h2 {
+h1, h2, h3, h4 {
   color: #6800a4;
   font-weight: 400;
 }
@@ -194,32 +194,7 @@ button:disabled {
   }
 }
 
-.avatar-profile {
-  margin: 15px 0;
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  img {
-    max-height: 100%;
-  }
-}
-.input-file {
-  opacity: 0;
-}
-.label-file__btn {
-  color: #6800a4;
-  padding: 10px 15px;
-  border-radius: 5px;
-  border: 1px solid #6800a4;
-  cursor: pointer;
-  &:hover {
-    background-color: #e8d1fc;
-  }
-}
-
+// Sign In
 .block-link {
   margin-top: 45px;
   color: #333;
@@ -227,6 +202,7 @@ button:disabled {
   border-bottom: 2px solid #d6bcf8;
   padding: 15px 0;
   h3 {
+    color: #333;
     margin-bottom: 15px;
   }
   a {

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import "./../styles/Header.scss";
-import avatarLogo from "../assets/avatar-no.png";
+import axios from "axios";
 import { useState } from "react";
 
 const Header = () =>  {
@@ -16,10 +16,24 @@ const Header = () =>  {
 
   const [token, setToken] = useState(false);
 
+  // состояние для хранения URL загружаемого файла
+  const [imageAvatar, setImageAvatar] = useState();
+
   useEffect(() => {
     const isToken = localStorage.getItem('token') 
     setToken(!!isToken);
     
+  }, [])
+
+  useEffect(() => {
+    axios.get('http://127.0.0.1:8000/api/v1/user/me/', 
+      {
+        headers:
+          {Authorization: `Token ${localStorage.getItem('token')}`}
+      }
+    ).then((res => {
+      setImageAvatar(`http://127.0.0.1:8000${res.data.user?.avatar}`)
+    }))
   }, [])
 
   return (
@@ -54,20 +68,16 @@ const Header = () =>  {
           </div>
           :
           <div style={{display: 'flex', alignItems: 'center'}}>            
-            <NavLink to="/profile">
-            <img src={avatarLogo} alt="" width="50px"/>
+            <NavLink to="/profile" className="link-avatar">
+              <img style={{height: '100%', width: 'fit-content'}} 
+              src={imageAvatar ? imageAvatar : '../../public/images/avatar-no.png'}  alt=""/>
             </NavLink>
 
             <div onClick={logout}>
-              <img src="/images/exit-icon.png" alt="выход" width={30} style={{marginLeft: '20px'}} />
+              <img src="/images/icon-exit.png" className="icon-exit" alt="выход" width={30} />
             </div>
           </div>
         }
-
-          
-          
-          
-        
 
         </div>    
       </nav>

@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import ButtonSmall from "../components/UI/button/ButtonSmall";
 import MyInput from "../components/UI/input/MyInput";
 
@@ -45,7 +45,7 @@ export const Registration = () => {
   // меняем дифолтное значение инпута, на то что вводит пользователь
   const passwordlHandler = (e) => {
     setPassword(e.target.value)
-    if (e.target.value.length < 3 || e.target.value.length > 10) {
+    if (e.target.value.length < 3 || e.target.value.length > 15) {
       setPasswordError('Пароль должен быть длиннее 3 и менее 10 символов')
       if (!e.target.value) {
         setPasswordError('Необходимо ввести пароль')
@@ -88,7 +88,7 @@ export const Registration = () => {
         navigate(0)
       }
     } catch (error) {
-      alert(error)
+      alert(error.response.data);
     }
   }
 
@@ -125,6 +125,13 @@ export const Registration = () => {
           зарегистрироваться
         </ButtonSmall>
       </form>
+
+      <div className="block-link">
+        <h3>Уже зарегистрированы?</h3>
+        <NavLink to="/sign-in">
+          перейти на страницу для входа
+        </NavLink>
+      </div>
     </>
   )}
 
