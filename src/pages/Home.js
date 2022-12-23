@@ -16,8 +16,19 @@ export const Home = () => {
 
   async function fetchCardItem() {
     try {
-      const res = await axios.get('http://localhost:3000/basket-cards')
-      setCardItems(res.data);
+      const res = await axios.get('http://127.0.0.1:8000/api/v1/main/basket/', 
+      {
+        headers:
+          {Authorization: `Token ${localStorage.getItem('token')}`}
+      }).then((res) => {
+        let cardBasket = res.data.item;
+        cardBasket.map(i => {
+          if (i.imageUrl) {
+            i.imageUrl = `http://127.0.0.1:8000${i.imageUrl}`
+          }
+        })
+        setCardItems(cardBasket);
+      })
     } catch(e) {
         console.log(e);
     }
@@ -32,32 +43,49 @@ export const Home = () => {
     //   setCards(json);
     // });
 
-    axios.get('http://localhost:3000/cards').then((res) => {
+    axios.get('http://127.0.0.1:8000/api/v1/main/phone/phone/').then((res) => {
       setCards(res.data);
     })
 
-    // axios.get('http://localhost:3000/basket-cards').then((res) => {
-    //   setCardItems(res.data);
-    // })
     fetchCardItem()
 
-  }, []);
+  }, [setCardItems]);
 
-  
-  const onAddToBasket = (obj) => {
-    if (obj.price > 0) {
-      axios.post('http://localhost:3000/basket-cards', obj)
-      setCardItems((prev) => [ ...prev , obj]);
-      console.log(obj);
-    } else {
-      alert('в данный момент товар не доступен к заказу');
-      // to do костыль с кнопкой добавления товара
-      //addPlus();
-    }
+  const onAddToBasket = async (id) => {
+    const res = axios.patch('http://127.0.0.1:8000/api/v1/main/basket/', 
+      {
+        item: id
+      },
+      {
+        headers: {Authorization: `Token ${localStorage.getItem('token')}`}
+      }
+    ).then((res) => {
+      setCardItems(res.data.item);
+    })
   }
+  
+  // const onAddToBasket = (obj) => {
+  //   if (obj.price > 0) {
+  //     axios.post('http://127.0.0.1:1000/api/v1/main/basket/', obj)
+  //     setCardItems((prev) => [ ...prev , obj]);
+  //     console.log(obj);
+  //   } else {
+  //     alert('в данный момент товар не доступен к заказу');
+  //     // to do костыль с кнопкой добавления товара
+  //     //addPlus();
+  //   }
+  // }
   const onRemoveItemBasket = (id) => {
-    axios.delete(`http://localhost:3000/basket-cards/${id}`);
-    setCardItems((prev) => prev.filter(cards => cards.id !== id));
+    axios.put(`http://127.0.0.1:8000/api/v1/main/basket/`,
+    {
+      item: id
+    },
+    {
+      headers: {Authorization: `Token ${localStorage.getItem('token')}`}
+    }
+    ).then((res) => {
+      setCardItems(res.data.item);
+    })
   }
 
   const priceBasket = cardItems.reduce((sum, obj) => obj.price + sum, 0);
@@ -104,19 +132,21 @@ export const Home = () => {
       <div className="cards-wrapper">
         {filteredCards.map((card) => (
           <Card 
+            item={card.id}
             key={card.id}
             amount={card.amount}
             title={card.title}
             price={card.price}
             imageUrl={card.imageUrl}
-            onPlus={(obj) => onAddToBasket(obj)}
+            onPlus={(item) => onAddToBasket(item)}
           />
         ))}        
       </div>
       <div>
 
       </div>
-      <Basket cardsList={cardItems} 
+      <Basket 
+              cardsList={cardItems} 
               onRemove={onRemoveItemBasket}
               priceBasket={priceBasket}
       />     

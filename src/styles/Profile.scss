@@ -67,4 +67,12 @@
 
     }
   }
+  &__btn-outline {
+    cursor: pointer;
+    &:hover {
+      transition: all 0.2s;
+      color: #6800a4;
+      font-weight: 600;
+    }
+  }
 }

@@ -1,12 +1,12 @@
 import React, {useState} from "react";
 import ButtonSmall from "./UI/button/ButtonSmall";
 
-const Card = ({imageUrl, title, price, amount, onPlus}) => {
+const Card = ({imageUrl, title, price, amount, item, onPlus}) => {
 
   const [isAdded, setIsAdded] = useState();
 
   const onClickPlus = () => {
-    onPlus({imageUrl, title, price, amount});
+    onPlus(item);
     setIsAdded(!isAdded)
   };
 

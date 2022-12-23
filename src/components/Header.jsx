@@ -32,7 +32,9 @@ const Header = () =>  {
           {Authorization: `Token ${localStorage.getItem('token')}`}
       }
     ).then((res => {
-      setImageAvatar(`http://127.0.0.1:8000${res.data.user?.avatar}`)
+      if (res.data.user?.avatar) {
+        setImageAvatar(`http://127.0.0.1:8000${res.data.user?.avatar}`)
+      }
     }))
   }, [])
 
@@ -70,7 +72,7 @@ const Header = () =>  {
           <div style={{display: 'flex', alignItems: 'center'}}>            
             <NavLink to="/profile" className="link-avatar">
               <img style={{height: '100%', width: 'fit-content'}} 
-              src={imageAvatar ? imageAvatar : '../../public/images/avatar-no.png'}  alt=""/>
+              src={imageAvatar ? imageAvatar : '../images/avatar-no.png'}  alt=""/>
             </NavLink>
 
             <div onClick={logout}>
