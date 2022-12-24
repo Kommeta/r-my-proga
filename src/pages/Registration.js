@@ -8,15 +8,18 @@ import MyInput from "../components/UI/input/MyInput";
 export const Registration = () => {
 
   // управление значением, которое будет в инпуте
+  const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   //отражает состояние был ли курсор в инпуте
+  const [nameDirty, setNameDirty] = useState(false)
   const [emailDirty, setEmailDirty] = useState(false)
   const [passwordDirty, setPasswordDirty] = useState(false)
 
   // управление состояние при ошибке
-  const [emailError, setEmailError] = useState('Email не может быть пустым')
+  const [nameError, setNameError] = useState('Поле имени не может быть пустым')
+  const [emailError, setEmailError] = useState('Поле еmail не может быть пустым')
   const [passwordError, setPasswordError] = useState('Необходимо ввести пароль')
 
   // состояние валидна форма или нет
@@ -24,13 +27,25 @@ export const Registration = () => {
 
 
   useEffect(() => {
-    if (emailError || passwordError) {
+    if (nameError || emailError || passwordError) {
       setFormValid(false)
     } else {
       setFormValid(true)
     }
-  }, [emailError, passwordError])
+  }, [nameError, emailError, passwordError])
 
+    // меняем дифолтное значение инпута, на то что вводит пользователь
+    const nameHandler = (e) => {
+      setName(e.target.value)
+      if (e.target.value.length < 1 || e.target.value.length > 25) {
+        setNameError('Имя должено состоять от 1 до 25 символов')
+        if (!e.target.value) {
+          setNameError('Необходимо ввести имя')
+        }
+      } else {
+        setNameError('')
+      }
+    }
   // меняем дифолтное значение инпута, на то что вводит пользователь
   const emailHandler = (e) => {
     setEmail(e.target.value)
@@ -41,12 +56,11 @@ export const Registration = () => {
       setEmailError('')
     }
   }
-
   // меняем дифолтное значение инпута, на то что вводит пользователь
   const passwordlHandler = (e) => {
     setPassword(e.target.value)
     if (e.target.value.length < 3 || e.target.value.length > 15) {
-      setPasswordError('Пароль должен быть длиннее 3 и менее 10 символов')
+      setPasswordError('Пароль должен быть длиннее 3 и менее 15 символов')
       if (!e.target.value) {
         setPasswordError('Необходимо ввести пароль')
       }
@@ -58,6 +72,9 @@ export const Registration = () => {
   // момент, когда пользователь покинул поле ввода
   const blurHandler = (e) => {
     switch (e.target.name) {
+      case 'name' :
+        setNameDirty(true)
+        break
       case 'email' :
         setEmailDirty(true)
         break
@@ -79,7 +96,8 @@ export const Registration = () => {
     // })
 
     try {
-      const data = {email, password}
+      const data = {first_name: name, email, password}
+      console.log(data);
       const response = await axios.post('http://127.0.0.1:8000/api/v1/user/register/', data)
       alert('Вы успешно зарегистрированы!')
       if (response.data.succsses) {
@@ -98,6 +116,17 @@ export const Registration = () => {
         style={{width: '300px'}}
       >
         <h1 style={{marginBottom: '25px'}}>Регистрация</h1>
+
+        {(nameDirty && nameError) && <div style={{color: 'red'}}>{nameError}</div>}
+        <MyInput
+          value={name}
+          onChange={e => nameHandler(e)}
+          onBlur = {e => blurHandler(e)}
+          name="name"
+          type="text"
+          placeholder="Введите ваше имя"
+        />
+
         {(emailDirty && emailError) && <div style={{color: 'red'}}>{emailError}</div>}
         <MyInput
           value={email}
@@ -107,6 +136,7 @@ export const Registration = () => {
           type="text"
           placeholder="Введите ваш email"
         />
+
         {(passwordDirty && passwordError) && <div style={{color: 'red'}}>{passwordError}</div>}
         <MyInput 
           value={password}

@@ -20,14 +20,17 @@
   &__card-right {
     background-color: #fff;
     border-radius: 10px;
-    width: 60%;
+    width: 63%;
     padding: 15px;
     display: grid;
-    grid-template-columns: 200px 150px 100px;
-    grid-template-rows: 50px 50px 50px;
+    grid-template-columns: 175px 170px 120px;
+    grid-template-rows: auto;
     justify-content: space-between;
     p {
       color: #333;
+    }
+    div {
+      margin-bottom: 30px;
     }
   }
   &__avatar {
@@ -60,6 +63,7 @@
     background-color: #f0e7f2;
     color: #6800a4;
     cursor: pointer;
+    margin-top: 20px;
     &:hover {
       transition: all 0.2s;
       background-color: #333;
@@ -71,8 +75,12 @@
     cursor: pointer;
     &:hover {
       transition: all 0.2s;
-      color: #6800a4;
+      color: #ff7f00;
       font-weight: 600;
     }
   }
+}
+.icon-down {
+  transition: all 0.4s;
+  transform: rotate(180deg);
 }

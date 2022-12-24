@@ -60,7 +60,13 @@ export const Home = () => {
         headers: {Authorization: `Token ${localStorage.getItem('token')}`}
       }
     ).then((res) => {
-      setCardItems(res.data.item);
+      let addCardBasket = res.data.item;
+      addCardBasket.map(i => {
+        if (i.imageUrl) {
+          i.imageUrl = `http://127.0.0.1:8000${i.imageUrl}`
+        }
+      })
+      setCardItems(addCardBasket);
     })
   }
   
@@ -84,11 +90,18 @@ export const Home = () => {
       headers: {Authorization: `Token ${localStorage.getItem('token')}`}
     }
     ).then((res) => {
-      setCardItems(res.data.item);
+      let removeCardBasket = res.data.item;
+      removeCardBasket.map(i => {
+        if (i.imageUrl) {
+          i.imageUrl = `http://127.0.0.1:8000${i.imageUrl}`
+        }
+      })
+      setCardItems(removeCardBasket);
     })
   }
 
-  const priceBasket = cardItems.reduce((sum, obj) => obj.price + sum, 0);
+  const priceBasket = cardItems.reduce((sum, obj) => (+obj.price) + sum, 0);
+  
   //  сортировка по цене
   const [selectedSort, setSelectedSort] = useState('');
 

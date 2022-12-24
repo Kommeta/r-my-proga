@@ -76,7 +76,7 @@ const Header = () =>  {
             </NavLink>
 
             <div onClick={logout}>
-              <img src="/images/icon-exit.png" className="icon-exit" alt="выход" width={30} />
+              <img src="/images/icons/icon-exit.png" className="icon-exit" alt="выход" width={30} />
             </div>
           </div>
         }

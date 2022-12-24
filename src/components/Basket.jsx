@@ -87,7 +87,7 @@ const Basket = ({cardsList = [], onRemove, priceBasket}) => {
               <div className="cards-wrapper__basket">
                 {
                 cardsList.map((obj) => (                
-                  <div key={obj.id} className="card card-basket" style={{marginRight: '15px'}}>
+                  <div key={obj.id} className="card card-basket" style={{marginRight: '10px'}}>
                     <img 
                       src={obj.imageUrl}
                       width={80} height={100} alt="" 
