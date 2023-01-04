@@ -2,7 +2,7 @@ import axios from "axios";
 import React from "react";
 import { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import ButtonSmall from "../components/UI/button/ButtonSmall";
+import ButtonMain from "../components/UI/button/ButtonMain";
 import MyInput from "../components/UI/input/MyInput";
 
 export const Registration = () => {
@@ -146,14 +146,14 @@ export const Registration = () => {
           type="text" 
           placeholder="Введите ваш пароль"
         />
-        <ButtonSmall 
+        <ButtonMain 
           onClick={() => registrationUser()}
-          className="btn-fiolet" 
+          className="btn btn-fiolet" 
           disabled={!formValid} 
           type='button'
           >
           зарегистрироваться
-        </ButtonSmall>
+        </ButtonMain>
       </form>
 
       <div className="block-link">

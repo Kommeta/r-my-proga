@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import ButtonSmall from "./UI/button/ButtonSmall";
+import ButtonMain from "./UI/button/ButtonMain";
 
 const Card = ({imageUrl, title, price, amount, item, onPlus}) => {
 
@@ -21,16 +21,16 @@ const Card = ({imageUrl, title, price, amount, item, onPlus}) => {
         <p className="card-description">
           {title}
         </p>
-        <div className="card-price">
+        <div className="card-price" style={{marginBottom: '15px'}}>
           <span>Цена:</span>
           <b>{price} руб.</b>
-          <ButtonSmall 
-            className={`sidebar ${isAdded ? 'btn-disabled ' : 'btn-fiolet' }`}
-            onClick={onClickPlus}
-            >
-              {isAdded ? 'добавлен' : 'в корзину' }              
-          </ButtonSmall>
-        </div>
+        </div>  
+        <ButtonMain 
+          className={`sidebar ${isAdded ? 'btn btn-disabled ' : 'btn btn-fiolet' }`}
+          onClick={onClickPlus}
+          >
+            {isAdded ? 'добавлен' : 'в корзину' }              
+        </ButtonMain>
       </div>
     </>
   )

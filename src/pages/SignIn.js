@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
-import ButtonSmall from "../components/UI/button/ButtonSmall";
+import ButtonMain from "../components/UI/button/ButtonMain";
 import MyInput from "../components/UI/input/MyInput";
 
 export const SignIn = () => {
@@ -110,14 +110,14 @@ const signInUser = async() => {
           type="text" 
           placeholder="Введите ваш пароль"
         />
-        <ButtonSmall 
+        <ButtonMain 
           onClick={() => signInUser()}
-          className="btn-fiolet" 
+          className="btn btn-fiolet" 
           disabled={!formValid} 
           type='button'
           >
           войти
-        </ButtonSmall>
+        </ButtonMain>
       </form>
 
       <div className="block-link">

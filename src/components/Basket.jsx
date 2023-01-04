@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import { useState } from "react";
 import Choice from "./Choice";
-import ButtonSmall from "./UI/button/ButtonSmall";
+import ButtonMain from "./UI/button/ButtonMain";
 
 
 const Basket = ({cardsList = [], onRemove, priceBasket}) => {
@@ -99,11 +99,12 @@ const Basket = ({cardsList = [], onRemove, priceBasket}) => {
                       <div className="card-price">
                         <span>Цена:</span>
                         <b>{obj.price} руб.</b>
-                        <ButtonSmall
-                          className='btn-grey'
+                        <ButtonMain
+                          style={{marginTop: '15px'}}
+                          className='btn btn-sm btn-outline-cloud'
                           onClick={() => onRemove(obj.id)}> 
                         удалить из корзины
-                        </ButtonSmall>
+                        </ButtonMain>
 
                         <div className="counter-card">
                           <button style={{borderRight: '1px solid rgb(239 239 239)'}}
@@ -143,7 +144,7 @@ const Basket = ({cardsList = [], onRemove, priceBasket}) => {
               </div>
           
               <div>
-                <button className="btn__basket-buy" type="button">
+                <button className="btn btn-sun" type="button">
                   Оформить заказ
                 </button>
               </div>

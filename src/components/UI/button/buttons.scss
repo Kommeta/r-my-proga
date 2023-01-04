@@ -1,0 +1,118 @@
+$theme-btns: (
+//Main color, hover, active #6800a4, #8022b6,
+fiolet: (#9d62d8, #6800a4,  #540185),
+// #F5C266 #f7d69b
+sun: (#e78700, #df5e00, #F5AF2F),
+gren: (#119598, #4AAFB1, #6cecee),
+cloud: (#222222, #919191, #000)
+);
+// миксин размера кнопки
+@mixin btn-size($padding-y: 12px, $padding-x: 10px, $min-w: 100px, $fz: 12px) {
+  padding: $padding-y $padding-x;
+  min-width: $min-w;
+  font-size: $fz;
+}
+
+.btn { 
+  border: 1px solid transparent;
+  border-radius: 6px;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+  text-transform: uppercase;
+  transition: all 0.4s;
+  @include btn-size; 
+  
+    @media all and (max-width: 1320px) {
+      @include btn-size (9px, 10px, 120px, 14px);
+    }
+    @media all and (max-width: 830px) {
+      @include btn-size (7px, 5px, 100px, 12px);
+    } 
+    @media all and (max-width: 540px) {
+      @include btn-size (7px, 5px, 80px, 12px);
+    }
+
+    @each $name, $colors in $theme-btns {
+    $mainColor: nth($colors, 1);
+    $btnHover: nth($colors, 2);
+    $btnActive: nth($colors, 3);
+  
+    &-#{$name} {
+      cursor: pointer;
+      color: #fff;
+      background-color: $mainColor;
+      border-color: $mainColor;
+      &:hover {
+        color: #fff;
+        background-color: $btnHover;
+        border-color: $btnHover;
+      }
+      &:focus {
+        background-color: $btnActive;
+        border-color: $btnActive;
+      }
+    }
+    &-outline-#{$name} {
+      cursor: pointer;
+      font-weight: 600;
+      background-color: #fff;
+      color: $mainColor;
+      border-color: $mainColor;
+      &:hover {
+        color: $btnHover;
+        border-color: $btnHover;
+      }
+      &:focus {
+        color: $btnActive;
+        border-color: $btnActive;
+      }
+    }
+    &-list-#{$name} {
+      cursor: pointer;
+      font-weight: 600;
+      background-color: #f4f4f4;
+      color: $mainColor;
+      border: none;
+      &:hover {
+        color: $btnHover;
+      }
+      &:focus {
+        color: $btnActive;
+      }
+    }
+    &-disabled {
+      margin-top: 10px;
+      color: #717171;
+      cursor: not-allowed;
+    }
+  }
+}
+// long
+.btn-lg {
+  @include btn-size (14px, 20px, 395px, 18px);
+}
+// small
+.btn-sm {
+@include btn-size (7px, 12px, 110px, 12px);
+
+  @media all and (max-width: 1320px) {
+    @include btn-size (7px, 12px, 100px, 12px);
+  } 
+  @media all and (max-width: 830px) {
+    @include btn-size (5px, 10px, 90px, 10px);
+  }
+  @media all and (max-width: 540px) {
+    @include btn-size (5px, 5px, 80px, 10px);
+  }
+}
+button:disabled {
+  color: #4c4c4c;
+  border-color: #4c4c4c;
+  background-color: #fff;
+  cursor: not-allowed;
+  &:hover {
+    background-color: #fff;
+    color: #4c4c4c;
+  }
+}

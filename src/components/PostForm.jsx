@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import MyButton from './UI/button/MyButton';
+import ButtonMain from './UI/button/ButtonMain';
 import MyInput from './UI/input/MyInput';
 
 const PostForm = ({create}) => {
@@ -30,7 +30,12 @@ const PostForm = ({create}) => {
             type="text" 
             placeholder='Ваш отзыв' />
 
-        <MyButton onClick={addNewPost} >Создать</MyButton>
+        <ButtonMain
+          className="btn btn-sm btn-outline-cloud"
+          onClick={addNewPost} 
+        >
+          Создать
+        </ButtonMain>
       </form>
     </div>
   )

@@ -3,8 +3,8 @@ import PostList from './../components/PostList';
 import './../styles/App.scss';
 import PostForm from './../components/PostForm';
 import PostFilter from './../components/PostFilter';
-import MyModal from './../components/UI/MyModal/MyModal';
-import ButtonSmall from '../components/UI/button/ButtonSmall';
+import MyModal from './../components/UI/myModal/MyModal';
+import ButtonMain from '../components/UI/button/ButtonMain';
 
 export const Reviews = () => {
 
@@ -40,9 +40,9 @@ export const Reviews = () => {
   return (
     <>
       <div className="App">
-        <ButtonSmall className="btn-fiolet" style={{marginTop: 50}} onClick={() => setModal(true)}>
+        <ButtonMain className="btn btn-fiolet" style={{marginTop: 50}} onClick={() => setModal(true)}>
           Оставить отзыв
-        </ButtonSmall>
+        </ButtonMain>
         <MyModal visible={modal} setVisible={setModal}>
           <PostForm create={createPost} />
         </MyModal>

@@ -30,7 +30,10 @@ export const Home = () => {
         setCardItems(cardBasket);
       })
     } catch(e) {
-        console.log(e);
+        if (e.response.statusText == 'Unauthorized') {
+          console.log('Для совершения покупок необходимо авторизоваться!')
+        } 
+        console.log(e.response)
     }
   }
 
@@ -52,22 +55,27 @@ export const Home = () => {
   }, [setCardItems]);
 
   const onAddToBasket = async (id) => {
-    const res = axios.patch('http://127.0.0.1:8000/api/v1/main/basket/', 
-      {
-        item: id
-      },
-      {
-        headers: {Authorization: `Token ${localStorage.getItem('token')}`}
-      }
-    ).then((res) => {
-      let addCardBasket = res.data.item;
-      addCardBasket.map(i => {
-        if (i.imageUrl) {
-          i.imageUrl = `http://127.0.0.1:8000${i.imageUrl}`
+    try {
+      const res = axios.patch('http://127.0.0.1:8000/api/v1/main/basket/', 
+        {
+          item: id
+        },
+        {
+          headers: {Authorization: `Token ${localStorage.getItem('token')}`}
         }
+      )
+      .then((res) => {
+        let addCardBasket = res.data.item;
+        addCardBasket.map(i => {
+          if (i.imageUrl) {
+            i.imageUrl = `http://127.0.0.1:8000${i.imageUrl}`
+          }
+        })
+        setCardItems(addCardBasket);
       })
-      setCardItems(addCardBasket);
-    })
+    } catch(e) {
+      console.log(e);
+  }
   }
   
   // const onAddToBasket = (obj) => {

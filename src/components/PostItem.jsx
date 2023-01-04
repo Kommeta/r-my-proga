@@ -1,5 +1,5 @@
 import React from "react";
-import ButtonSmall from "./UI/button/ButtonSmall";
+import ButtonMain from "./UI/button/ButtonMain";
 
 const PostItem = (props) => {
   return (
@@ -12,9 +12,9 @@ const PostItem = (props) => {
           </div>
         </div>        
         <div className="post__btns">
-          <ButtonSmall className="btn-grey" onClick={() => props.remove(props.post)}>
+          <ButtonMain className="btn btn-sm btn-outline-cloud" onClick={() => props.remove(props.post)}>
             удалить
-          </ButtonSmall>
+          </ButtonMain>
         </div>
       </div>
     </div>
