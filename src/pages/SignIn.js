@@ -20,7 +20,7 @@ const [inputVisit, setInputVisit] = useState({
 // управление состояние при ошибке
 const [emailError, setEmailError] = useState('Email не может быть пустым')
 const [passwordError, setPasswordError] = useState('Необходимо ввести пароль')
-const [nameError, setNameError] = useState('Поле имени не может быть пустым')
+const [nameError, setNameError] = useState('Если имя не будет введено,оно сформируется автоматически')
 
 // состояние валидна форма или нет
 const [formValid, setFormValid] = useState(false)
@@ -28,7 +28,7 @@ const [formValid, setFormValid] = useState(false)
 const [errorResponse, setErrorResponse] = useState('')
 
 useEffect(() => {
-  if (emailError || passwordError || nameError) {
+  if (emailError || passwordError && nameError) {
     setFormValid(false)
   } else {
     setFormValid(true)
@@ -64,7 +64,7 @@ const nameHandler = (e) => {
   if (e.target.value.length < 1 || e.target.value.length > 25) {
     setNameError('Имя должено содержать от 1 до 25 символов')
     if (!e.target.value) {
-      setNameError('Необходимо ввести имя')
+      setNameError('Если имя не будет введено,оно сформируется автоматически')
     }
   } else {
     setNameError('')

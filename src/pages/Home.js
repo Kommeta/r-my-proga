@@ -4,10 +4,13 @@ import Basket from "../components/Basket";
 import SelectPrice from "../components/UI/select/SelectPrice";
 import MyInput from "../components/UI/input/MyInput";
 import axios from "axios";
+import '../styles/Loading.scss'
 
 
 export const Home = () => {
 
+  const API_URL = 'http://127.0.0.1:8000/api/v1/main';
+  const [isLoading, setIsLoading] = useState(true)
   // каталог товаров
   const [cards, setCards] = useState([]);
 
@@ -16,7 +19,7 @@ export const Home = () => {
 
   async function fetchCardItem() {
     try {
-      const res = await axios.get('http://127.0.0.1:8000/api/v1/main/basket/', 
+      const res = await axios.get(`API_URL${/basket/}`, 
       {
         headers:
           {Authorization: `Token ${localStorage.getItem('token')}`}
@@ -46,9 +49,11 @@ export const Home = () => {
     //   setCards(json);
     // });
 
-    axios.get('http://127.0.0.1:8000/api/v1/main/phone/phone/').then((res) => {
-      setCards(res.data);
-    })
+    axios.get('http://127.0.0.1:8000/api/v1/main/phone/phone/')
+      .then((res) => {
+        setCards(res.data);
+        setIsLoading(false)
+      })
 
     fetchCardItem()
 
@@ -56,7 +61,7 @@ export const Home = () => {
 
   const onAddToBasket = async (id) => {
     try {
-      const res = axios.patch('http://127.0.0.1:8000/api/v1/main/basket/', 
+      const res = axios.patch(`API_URL${/basket/}`, 
         {
           item: id
         },
@@ -90,7 +95,7 @@ export const Home = () => {
   //   }
   // }
   const onRemoveItemBasket = (id) => {
-    axios.put(`http://127.0.0.1:8000/api/v1/main/basket/`,
+    axios.put(`API_URL${/basket/}`,
     {
       item: id
     },
@@ -150,22 +155,39 @@ export const Home = () => {
         />
       </div>
 
-      <div className="cards-wrapper">
-        {filteredCards.map((card) => (
-          <Card 
-            item={card.id}
-            key={card.id}
-            amount={card.amount}
-            title={card.title}
-            price={card.price}
-            imageUrl={card.imageUrl}
-            onPlus={(item) => onAddToBasket(item)}
-          />
-        ))}        
-      </div>
-      <div>
+      { isLoading ? 
+        <div class="lds-default">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        
+        :
 
-      </div>
+        <div className="cards-wrapper">
+          {filteredCards.map((card) => (
+            <Card 
+              item={card.id}
+              key={card.id}
+              amount={card.amount}
+              title={card.title}
+              price={card.price}
+              imageUrl={card.imageUrl}
+              onPlus={(item) => onAddToBasket(item)}
+            />
+          ))}        
+        </div>
+      }
+
       <Basket 
               cardsList={cardItems} 
               onRemove={onRemoveItemBasket}
