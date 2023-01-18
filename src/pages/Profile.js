@@ -299,8 +299,9 @@ export const Profile = () => {
             </ButtonList>
 
             {
-              !openInput ?
-              <form action="" style={{marginTop: '20px'}} className="profile__user-updata">
+              !openInput &&
+              <div>
+                <form action="" style={{marginTop: '20px', marginBottom: '20px'}} className="profile__user-updata">
                 <div>
                   <h4 style={{color: '#000'}}>Введите новое имя:</h4>
                   {(nameDirty && nameError) && <p style={{color: 'red'}}>{nameError}</p>}
@@ -339,21 +340,19 @@ export const Profile = () => {
                   name="password" 
                   type="text" >
                 </MyInput>
-              </form> : ''
+                <div style={{display: 'flex', justifyContent: 'center'}}>
+                  <ButtonMain 
+                    //onClick={() => updateProfile(name)}
+                    className="btn btn-fiolet">
+                    сохранить изменения
+                  </ButtonMain>
+                </div>
+                </form> 
+              </div>
             }
           </div>
 
         </div>
-      </div>
-
-
-
-      <div style={{display: 'flex', justifyContent: 'center'}}>
-        <ButtonMain 
-          onClick={() => updateProfile(name)}
-          className="btn btn-fiolet">
-        сохранить изменения
-      </ButtonMain>
       </div>
       
     </>

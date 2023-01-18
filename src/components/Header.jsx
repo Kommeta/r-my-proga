@@ -48,13 +48,13 @@ const Header = () =>  {
             alt="logotip" 
           />
           <div className="link-navigation">
-            <NavLink to="/" exact>
+            <NavLink to="." end>
               Главная
             </NavLink>
-            <NavLink to="/reviews">
+            <NavLink to="reviews">
               Отзывы
             </NavLink>
-            <NavLink to="/about">
+            <NavLink to="about">
               О нас
             </NavLink>
           </div>
@@ -70,13 +70,13 @@ const Header = () =>  {
           </div>
           :
           <div style={{display: 'flex', alignItems: 'center'}}>            
-            <NavLink to="/profile" className="link-avatar">
+            <NavLink to="profile" className="link-avatar">
               <img style={{height: '100%', width: 'fit-content'}} 
-              src={imageAvatar ? imageAvatar : '../images/avatar-no.png'}  alt=""/>
+              src={imageAvatar ? imageAvatar : '../images/avatar-no.png'}  alt="профиль" title="личный кабинет"/>
             </NavLink>
 
             <div onClick={logout}>
-              <img src="/images/icons/icon-exit.png" className="icon-exit" alt="выход" width={30} />
+              <img src="/images/icons/icon-exit.png" className="icon-exit" alt="выход" width={30} title="выход"/>
             </div>
           </div>
         }

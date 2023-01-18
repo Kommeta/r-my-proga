@@ -10,7 +10,9 @@ import '../styles/Loading.scss'
 export const Home = () => {
 
   const API_URL = 'http://127.0.0.1:8000/api/v1/main';
-  const [isLoading, setIsLoading] = useState(true)
+  const BASE_API_URL = 'http://127.0.0.1:8000';
+
+  const [isLoading, setIsLoading] = useState(true);
   // каталог товаров
   const [cards, setCards] = useState([]);
 
@@ -19,7 +21,7 @@ export const Home = () => {
 
   async function fetchCardItem() {
     try {
-      const res = await axios.get(`API_URL${/basket/}`, 
+      const res = await axios.get(`${API_URL}${/basket/}`, 
       {
         headers:
           {Authorization: `Token ${localStorage.getItem('token')}`}
@@ -27,7 +29,7 @@ export const Home = () => {
         let cardBasket = res.data.item;
         cardBasket.map(i => {
           if (i.imageUrl) {
-            i.imageUrl = `http://127.0.0.1:8000${i.imageUrl}`
+            i.imageUrl = `${BASE_API_URL}${i.imageUrl}`
           }
         })
         setCardItems(cardBasket);
@@ -49,7 +51,7 @@ export const Home = () => {
     //   setCards(json);
     // });
 
-    axios.get('http://127.0.0.1:8000/api/v1/main/phone/phone/')
+    axios.get(`${API_URL}${/phone\phone/}`)
       .then((res) => {
         setCards(res.data);
         setIsLoading(false)
@@ -61,7 +63,7 @@ export const Home = () => {
 
   const onAddToBasket = async (id) => {
     try {
-      const res = axios.patch(`API_URL${/basket/}`, 
+      const res = axios.patch(`${API_URL}${/basket/}`, 
         {
           item: id
         },
@@ -73,7 +75,7 @@ export const Home = () => {
         let addCardBasket = res.data.item;
         addCardBasket.map(i => {
           if (i.imageUrl) {
-            i.imageUrl = `http://127.0.0.1:8000${i.imageUrl}`
+            i.imageUrl = `${BASE_API_URL}${i.imageUrl}`
           }
         })
         setCardItems(addCardBasket);
@@ -95,7 +97,7 @@ export const Home = () => {
   //   }
   // }
   const onRemoveItemBasket = (id) => {
-    axios.put(`API_URL${/basket/}`,
+    axios.put(`${API_URL}${/basket/}`,
     {
       item: id
     },
@@ -106,7 +108,7 @@ export const Home = () => {
       let removeCardBasket = res.data.item;
       removeCardBasket.map(i => {
         if (i.imageUrl) {
-          i.imageUrl = `http://127.0.0.1:8000${i.imageUrl}`
+          i.imageUrl = `${BASE_API_URL}${i.imageUrl}`
         }
       })
       setCardItems(removeCardBasket);
@@ -192,7 +194,7 @@ export const Home = () => {
               cardsList={cardItems} 
               onRemove={onRemoveItemBasket}
               priceBasket={priceBasket}
-      />     
+      />   
     </>
   )
 }
